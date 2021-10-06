@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AdminsController;
 use App\Http\Controllers\ProductColorController;
+use App\Http\Controllers\WishListsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'adminAuth']], funct
         Route::post('/store', [UsersController::class, 'store'])->name('admin.users.add');
         Route::post('/changeStatus/{id}', [UsersController::class, 'editStatus'])->name('admin.users.editStatus');
         Route::delete('/delete/{id}', [UsersController::class, 'delete'])->name('admin.users.delete');
+    });
+    Route::group(['prefix' => "wishlists"], function () {
+        Route::get('/', [WishListsController::class, 'index'])->name('admin.wishLists');
     });
 
 });
