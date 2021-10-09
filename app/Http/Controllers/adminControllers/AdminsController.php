@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\adminsControllers;
 
+use App\Http\Controllers\Controller;
 use App\Http\Traits\AdminsTrait;
 use App\Models\Role;
 use App\Models\User;

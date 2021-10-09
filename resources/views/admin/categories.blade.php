@@ -2,138 +2,152 @@
 
 
 <!--  BEGIN CONTENT AREA  -->
-        <div id="content" class="main-content">
-            <div class="container">
+<div id="content" class="main-content">
+    <div class="container">
 
-                <div class="container">
+        <div class="container">
 
 
-                    <div class="row layout-top-spacing">
+            <div class="row layout-top-spacing">
 
-                        <div id="basic" class="col-lg-12 layout-spacing">
-                            <div class="statbox widget box box-shadow">
-                                <div class="widget-header">
-                                    <div class="row">
-                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>Add Category</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content widget-content-area">
-
-                                    <div class="row">
-                                        <div class="col-lg-6 col-12 mx-auto">
-                                            <form method="post">
-                                                <div class="form-group">
-                                                    <label for="t-text" class="sr-only">Text</label>
-                                                    <input id="t-text" type="text" name="name" placeholder="Some Text..." class="form-control" required>
-                                                    <input type="submit" class="mt-4 btn btn-primary">
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-
+                <div id="basic" class="col-lg-12 layout-spacing">
+                    <div class="statbox widget box box-shadow">
+                        <div class="widget-header">
+                            <div class="row">
+                                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                    <h4>Add Category</h4>
                                 </div>
                             </div>
                         </div>
-
-
-                        <div id="tableProgress" class="col-lg-12 col-12 layout-spacing">
-                            <div class="statbox widget box box-shadow">
-                                <div class="widget-header">
-                                    <div class="row">
-                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>Progress Table</h4>
-                                        </div>
-                                    </div>
+                        <div class="widget-content widget-content-area">
+                            @if (Session::has('done'))
+                                <div class="alert alert-success text-center" role="alert">
+                                    {{ Session::get('done') }}
                                 </div>
-                                <div class="widget-content widget-content-area">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                            <tr>
-                                                <th class="text-center">#</th>
-                                                <th>Name</th>
-                                                <th>Progress</th>
-                                                <th>Sales</th>
-                                                <th class="text-center">Action</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td>John Doe</td>
-                                                <td>
-                                                    <div class="progress br-30">
-                                                        <div class="progress-bar br-30 bg-primary" role="progressbar" style="width: 29.56%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </td>
-                                                <td><p class="text-danger">29.56%</p></td>
-                                                <td class="text-center">
-                                                    <ul class="table-controls">
-                                                        <li><a href="javascript:void(0);"  data-toggle="tooltip" data-placement="top" title="Edit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a></li>
-                                                        <li><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a></li>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">2</td>
-                                                <td>Andy King</td>
-                                                <td>
-                                                    <div class="progress br-30">
-                                                        <div class="progress-bar br-30 bg-warning" role="progressbar" style="width: 19.15%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </td>
-                                                <td><p class="text-danger">19.15%</p></td>
-                                                <td class="text-center">
-                                                    <ul class="table-controls">
-                                                        <li><a href="javascript:void(0);"  data-toggle="tooltip" data-placement="top" title="Edit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a></li>
-                                                        <li><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a></li>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">3</td>
-                                                <td>Lisa Doe</td>
-                                                <td>
-                                                    <div class="progress br-30">
-                                                        <div class="progress-bar br-30 bg-success" role="progressbar" style="width: 39.00%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </td>
-                                                <td><p class="text-danger">39.00%</p></td>
-                                                <td class="text-center">
-                                                    <ul class="table-controls">
-                                                        <li><a href="javascript:void(0);"  data-toggle="tooltip" data-placement="top" title="Edit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a></li>
-                                                        <li><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a></li>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">4</td>
-                                                <td>Vincent Carpenter</td>
-                                                <td>
-                                                    <div class="progress br-30">
-                                                        <div class="progress-bar br-30 bg-secondary" role="progressbar" style="width: 88.03%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </td>
-                                                <td><p class="text-success">88.03%</p></td>
-                                                <td class="text-center">
-                                                    <ul class="table-controls">
-                                                        <li><a href="javascript:void(0);"  data-toggle="tooltip" data-placement="top" title="Edit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a></li>
-                                                        <li><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a></li>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
+                            @elseif(Session::has('error'))
+                                <div class="alert alert-danger text-center" role="alert">
+                                    {{ Session::get('error') }}
+                                </div>
+
+                            @elseif ($errors->any())
+                                @foreach ($errors->all() as $error)
+                                    <div class="alert alert-danger text-center" role="alert">
+                                        {{ $error }}
                                     </div>
+                                @endforeach
+                            @endif
 
-                                    <div class="code-section-container">
+                            <div class="row">
+                                <div class="col-lg-6 col-12 mx-auto">
+                                    <form method="post" action="{{ route('admin.category.store') }}"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="t-text">Text</label>
+                                            <input id="t-text" type="text" name="name" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="t-text">Image</label>
+                                            <input id="t-text" type="file" name="image" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="t-text">Icon</label>
+                                            <input id="t-text" type="text" name="icon" class="form-control" required>
+                                        </div>
+                                        <button class="btn btn-primary mt-3 mb-2" type="submit">Add</button>
+                                    </form>
+                                </div>
+                            </div>
 
-                                        <button class="btn toggle-code-snippet"><span>Code</span></button>
+                        </div>
+                    </div>
+                </div>
 
-                                        <div class="code-section text-left">
-                                                <pre>
+
+                <div id="tableProgress" class="col-lg-12 col-12 layout-spacing">
+                    <div class="statbox widget box box-shadow">
+                        <div class="widget-header">
+                            <div class="row">
+                                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                    <h4>Progress Table</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-content widget-content-area">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">#</th>
+                                            <th class="text-center">Name</th>
+                                            <th class="text-center">Image</th>
+                                            <th class="text-center">Icon</th>
+                                            <th class="text-center">Products Count</th>
+                                            <th class="text-center">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($categories as $category)
+                                            <tr>
+                                                <td class="text-center">{{$category->id}}</td>
+                                                <td class="text-center">{{$category->name}}</td>
+                                                <td class="text-center">{{$category->image}}</td>
+                                                <td class="text-center">{{$category->icon}}</td>
+                                                <td class="text-center">{{$category->countOfProducts}}</td>
+                                                <td class="text-center">
+                                                    <ul class="table-controls">
+                                                        <li>
+                                                            <form method="get"
+                                                                action="{{ route('admin.category.edit', $category->id) }}">
+                                                                <button class="btn btn-dark" type="submit"><svg
+                                                                        xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-edit-2">
+                                                                        <path
+                                                                            d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z">
+                                                                        </path>
+                                                                    </svg></button>
+                                                            </form>
+                                                        </li>
+                                                        <li>
+                                                            <form method="post"
+                                                                action="{{ route('admin.category.delete', $category->id) }}">
+                                                                @method('DELETE')
+                                                                @csrf
+                                                                <button class="btn btn-dark" type="submit"><svg
+                                                                        xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-trash-2">
+                                                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                                                        <path
+                                                                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                                        </path>
+                                                                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                                                                    </svg></button>
+                                                            </form>
+                                                        </li>
+
+                                                    </ul>
+
+
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="code-section-container">
+
+                                <button class="btn toggle-code-snippet"><span>Code</span></button>
+
+                                <div class="code-section text-left">
+                                    <pre>
 &lt;div class="table-responsive"&gt;
     &lt;table class="table table-bordered"&gt;
         &lt;thead&gt;
@@ -214,16 +228,16 @@
     &lt;/table&gt;
 &lt;/div&gt;
     </pre>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
+
+
             </div>
         </div>
-        <!--  END CONTENT AREA  -->
+    </div>
+</div>
+<!--  END CONTENT AREA  -->
 @include('admin.assets.footer')
