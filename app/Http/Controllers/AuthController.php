@@ -30,7 +30,6 @@ class AuthController extends Controller
             'email' => 'required',
             'password'=>'required'
         ]);
-
         $userData = $request->only('email', 'password');
         $userData['status']=1;
         if(Auth::attempt($userData))

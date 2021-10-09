@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\adminControllers\OrderController;
 use App\Http\Controllers\adminControllers\UsersController;
 use App\Http\Controllers\adminControllers\AdminsController;
+use App\Http\Controllers\adminControllers\CategoryController;
 use App\Http\Controllers\adminControllers\ProductColorController;
 use App\Http\Controllers\adminControllers\ProductController;
 use App\Http\Controllers\adminControllers\WishListsController;
@@ -23,25 +24,29 @@ use App\Http\Controllers\adminControllers\WishListsController;
 
 
 
-Route::group(['prefix' => 'admin', 'as'=>'admin.' ,'middleware' => ['auth', 'adminAuth']], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'adminAuth']], function () {
 
     Route::get('/', function () {
         return view('admin.index');
     })->name('home');
 
+    Route::group(['prefix' => "category", 'as' => 'category.'], function () {
+        Route::get('/', [CategoryController::class, 'index'])->name('index');
+        Route::post('/store', [CategoryController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('edit');
+        Route::put('/edit/{id}', [CategoryController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [CategoryController::class, 'delete'])->name('delete');
+    });
 
-    Route::get('/categories', function () {
-        return view('admin.categories');
-    })->name('categories');
 
-    Route::group(['prefix' => "productColor",'middleware' => ['auth', 'adminAuth']], function () {
+    Route::group(['prefix' => "productColor"], function () {
         Route::get('/', [ProductColorController::class, 'index'])->name('productColor');
         Route::post('/store', [ProductColorController::class, 'store'])->name('productcolor.add');
         Route::get('/edit/{id}', [ProductColorController::class, 'edit'])->name('productColor.editPage');
         Route::put('/edit/{id}', [ProductColorController::class, 'update'])->name('productcolor.edit');
         Route::delete('/delete/{id}', [ProductColorController::class, 'delete'])->name('productcolor.delete');
     });
-    Route::group(['prefix' => "product", 'middleware' => ['auth', 'adminAuth']], function () {
+    Route::group(['prefix' => "product"], function () {
         Route::get('/', [ProductController::class, 'index'])->name('product');
         Route::post('/store', [ProductController::class, 'store'])->name('product.store');
         Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('product.editPage');
@@ -57,7 +62,6 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.' ,'middleware' => ['auth', 'adm
     Route::group(['prefix' => "wishlists"], function () {
         Route::get('/', [WishListsController::class, 'index'])->name('wishLists');
     });
-
 });
 
 Route::group(['prefix' => 'owner', 'middleware' => ['auth', 'ownerAuth']], function () {
@@ -87,11 +91,11 @@ Route::group([], function () {
     Route::get('/product/details/{slug}', [ProductColorController::class, 'productDetails'])->name('product.details');
 });
 
-Route::group(['prefix' => 'admin', 'as'=>'admin.' ], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
-Route::get('/login', [AuthController::class, 'adminLoginPage'])->name('loginPage');
-Route::post('/login', [AuthController::class, 'adminLogin'])->name('login');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/login', [AuthController::class, 'adminLoginPage'])->name('loginPage');
+    Route::post('/login', [AuthController::class, 'adminLogin'])->name('login');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 Route::get('/login', [AuthController::class, 'userLoginPage'])->name('user.loginPage');
 Route::post('/login', [AuthController::class, 'userLogin'])->name('user.login');

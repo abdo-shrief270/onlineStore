@@ -16,7 +16,8 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!in_array('owner', auth()->user()->UserRoles) || !in_array('admin', auth()->user()->UserRoles))
+        return $next($request);
+        if(!in_array('admin', auth()->user()->UserRoles) || !in_array('owner', auth()->user()->UserRoles))
         {
             return redirect(route('admin.login'));
         }
@@ -24,6 +25,5 @@ class AdminMiddleware
         {
             return redirect(route('admin.login'));
         }
-        return $next($request);
     }
 }
