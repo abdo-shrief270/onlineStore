@@ -43,16 +43,22 @@
                                         enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
-                                            <label for="t-text">Text</label>
-                                            <input id="t-text" type="text" name="name" class="form-control" required>
+                                            <label for="t-text">Category Name :</label>
+                                            <input id="t-text" type="text" name="name" placeholder="Enter category name" class="form-control" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="t-text">Image</label>
-                                            <input id="t-text" type="file" name="image" class="form-control" required>
+                                            <label for="t-text">Category Icon :</label>
+                                            <input id="t-text" type="text" name="icon" placeholder="Enter category icon" class="form-control" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="t-text">Icon</label>
-                                            <input id="t-text" type="text" name="icon" class="form-control" required>
+                                            <div class="custom-file-container" data-upload-id="myFirstImage">
+                                                <label>Category Image : <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
+                                                <label class="custom-file-container__custom-file" >
+                                                    <input type="file" class="custom-file-container__custom-file__custom-file-input" name="image" accept="image/*">
+                                                    <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                                </label>
+                                                <div class="custom-file-container__image-preview"></div>
+                                            </div>
                                         </div>
                                         <button class="btn btn-primary mt-3 mb-2" type="submit">Add</button>
                                     </form>
@@ -69,7 +75,7 @@
                         <div class="widget-header">
                             <div class="row">
                                 <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                    <h4>Progress Table</h4>
+                                    <h4>Categpries Table</h4>
                                 </div>
                             </div>
                         </div>
@@ -80,20 +86,24 @@
                                         <tr>
                                             <th class="text-center">#</th>
                                             <th class="text-center">Name</th>
-                                            <th class="text-center">Image</th>
                                             <th class="text-center">Icon</th>
+                                            <th class="text-center">Image</th>
                                             <th class="text-center">Products Count</th>
+                                            <th class="text-center">Related Product Colors</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($categories as $category)
                                             <tr>
-                                                <td class="text-center">{{$category->id}}</td>
-                                                <td class="text-center">{{$category->name}}</td>
-                                                <td class="text-center">{{$category->image}}</td>
-                                                <td class="text-center">{{$category->icon}}</td>
-                                                <td class="text-center">{{$category->countOfProducts}}</td>
+                                                <td class="text-center">{{ $category->id }}</td>
+                                                <td class="text-center">{{ $category->name }}</td>
+                                                <td class="text-center">{{ $category->icon }}</td>
+                                                <td class="text-center"><img
+                                                        src="{{ asset('images/CategoriesImages/' . $category->image) }}"
+                                                        style="max-height:50px" alt=""></td>
+                                                <td class="text-center">{{ $category->countOfProducts }}</td>
+                                                <td class="text-center">{{ $category->countOfAllProductColors }}</td>
                                                 <td class="text-center">
                                                     <ul class="table-controls">
                                                         <li>
@@ -133,108 +143,15 @@
                                                         </li>
 
                                                     </ul>
-
-
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
-
-                            <div class="code-section-container">
-
-                                <button class="btn toggle-code-snippet"><span>Code</span></button>
-
-                                <div class="code-section text-left">
-                                    <pre>
-&lt;div class="table-responsive"&gt;
-    &lt;table class="table table-bordered"&gt;
-        &lt;thead&gt;
-            &lt;tr&gt;
-                &lt;th class="text-center"&gt;#&lt;/th&gt;
-                &lt;th&gt;Name&lt;/th&gt;
-                &lt;th&gt;Progress&lt;/th&gt;
-                &lt;th&gt;Sales&lt;/th&gt;
-                &lt;th class="text-center"&gt;Action&lt;/th&gt;
-            &lt;/tr&gt;
-        &lt;/thead&gt;
-        &lt;tbody&gt;
-            &lt;tr&gt;
-                &lt;td class="text-center"&gt;1&lt;/td&gt;
-                &lt;td&gt;John Doe&lt;/td&gt;
-                &lt;td&gt;
-                    &lt;div class="progress br-30"&gt;
-                        &lt;div class="progress-bar br-30 bg-primary" role="progressbar" style="width: 29.56%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"&gt;&lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/td&gt;
-                &lt;td&gt;&lt;p class="text-danger"&gt;29.56%&lt;/p&gt;&lt;/td&gt;
-                &lt;td class="text-center"&gt;
-                    &lt;ul class="table-controls"&gt;
-                        &lt;li&gt;&lt;a href="javascript:void(0);"  data-toggle="tooltip" data-placement="top" title="Edit"&gt;&lt;svg&gt; ... &lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
-                        &lt;li&gt;&lt;a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Delete"&gt;&lt;svg&gt; ... &lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
-                    &lt;/ul&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td class="text-center"&gt;2&lt;/td&gt;
-                &lt;td&gt;Andy King&lt;/td&gt;
-                &lt;td&gt;
-                    &lt;div class="progress br-30"&gt;
-                        &lt;div class="progress-bar br-30 bg-warning" role="progressbar" style="width: 19.15%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"&gt;&lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/td&gt;
-                &lt;td&gt;&lt;p class="text-danger"&gt;19.15%&lt;/p&gt;&lt;/td&gt;
-                &lt;td class="text-center"&gt;
-                    &lt;ul class="table-controls"&gt;
-                        &lt;li&gt;&lt;a href="javascript:void(0);"  data-toggle="tooltip" data-placement="top" title="Edit"&gt;&lt;svg&gt; ... &lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
-                        &lt;li&gt;&lt;a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Delete"&gt;&lt;svg&gt; ... &lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
-                    &lt;/ul&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td class="text-center"&gt;3&lt;/td&gt;
-                &lt;td&gt;Lisa Doe&lt;/td&gt;
-                &lt;td&gt;
-                    &lt;div class="progress br-30"&gt;
-                        &lt;div class="progress-bar br-30 bg-success" role="progressbar" style="width: 39.00%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"&gt;&lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/td&gt;
-                &lt;td&gt;&lt;p class="text-danger"&gt;39.00%&lt;/p&gt;&lt;/td&gt;
-                &lt;td class="text-center"&gt;
-                    &lt;ul class="table-controls"&gt;
-                        &lt;li&gt;&lt;a href="javascript:void(0);"  data-toggle="tooltip" data-placement="top" title="Edit"&gt;&lt;svg&gt; ... &lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
-                        &lt;li&gt;&lt;a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Delete"&gt;&lt;svg&gt; ... &lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
-                    &lt;/ul&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td class="text-center"&gt;4&lt;/td&gt;
-                &lt;td&gt;Vincent Carpenter&lt;/td&gt;
-                &lt;td&gt;
-                    &lt;div class="progress br-30"&gt;
-                        &lt;div class="progress-bar br-30 bg-secondary" role="progressbar" style="width: 88.03%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"&gt;&lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/td&gt;
-                &lt;td&gt;&lt;p class="text-success"&gt;88.03%&lt;/p&gt;&lt;/td&gt;
-                &lt;td class="text-center"&gt;
-                    &lt;ul class="table-controls"&gt;
-                        &lt;li&gt;&lt;a href="javascript:void(0);"  data-toggle="tooltip" data-placement="top" title="Edit"&gt;&lt;svg&gt; ... &lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
-                        &lt;li&gt;&lt;a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Delete"&gt;&lt;svg&gt; ... &lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
-                    &lt;/ul&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-        &lt;/tbody&gt;
-    &lt;/table&gt;
-&lt;/div&gt;
-    </pre>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
